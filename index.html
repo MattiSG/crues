@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Crue de l’Hérault</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="apple-touch-icon" href="icon.png">
+</head>
+
+<body>
+  <h1 id="title">Je contacte Vigicrue…</h1>
+  <script src="dist/bundle.js"></script>
+  <script>
+    new Station('Y230002001').getWaterHeight().then(height => {
+      let heightMeters = height / 1000;
+      heightMeters =  ('' + heightMeters).replace('.', ',');
+      document.getElementById('title').innerText = `L’eau est à ${heightMeters} mètres à Paulhan`;
+    });
+  </script>
+</body>
+</html>
