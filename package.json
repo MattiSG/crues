@@ -16,5 +16,8 @@
   "homepage": "https://github.com/MattiSG/crues#readme",
   "devDependencies": {
     "jest": "^24.9.0"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.0"
   }
 }

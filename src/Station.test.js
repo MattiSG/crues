@@ -8,5 +8,5 @@ test('Station constructor', () => {
 });
 
 test('Station returns its height', () => {
-	return expect(new Station(ID).getWaterHeight()).resolves.toBe(4002);
+	return expect(new Station(ID).getWaterHeight()).resolves.toBeGreaterThan(500);
 });
