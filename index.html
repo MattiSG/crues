@@ -13,11 +13,18 @@
   <h1 id="title">Je contacte Vigicrue…</h1>
   <script src="dist/bundle.js"></script>
   <script>
-    new Station('Y230002001').getWaterHeight().then(height => {
-      let heightMeters = height / 1000;
-      heightMeters =  ('' + heightMeters).replace('.', ',');
-      document.getElementById('title').innerText = `L’eau est à ${heightMeters} mètres à Paulhan`;
+    const stationPaulhan = new Station('Y230002001');
+
+    const maison = new Target(stationPaulhan, 40, {
+      'le ras de la plateforme': 3300,
+      'la plateforme': 3600,
+      'le premier muret': 4700,
+      'la première marche de l’escalier': 4990,
+      'le perron': 5950,
+      '10 cm dans la maison': 6050,
     });
+
+    maison.getStatus().then(status => document.getElementById('title').innerText = status);
   </script>
 </body>
 </html>
