@@ -3,7 +3,7 @@
   "description": "Notifier en cas de crues",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -13,5 +13,8 @@
   "bugs": {
     "url": "https://github.com/MattiSG/crues/issues"
   },
-  "homepage": "https://github.com/MattiSG/crues#readme"
+  "homepage": "https://github.com/MattiSG/crues#readme",
+  "devDependencies": {
+    "jest": "^24.9.0"
+  }
 }
