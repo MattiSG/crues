@@ -14,7 +14,7 @@ class Target {
 					highestSubmergedLandmark = landmark;
 			});
 
-			return `L’eau recouvrira ${highestSubmergedLandmark} dans ${this.minutesDelay} minutes`;
+			return `L’eau recouvrira probablement ${highestSubmergedLandmark} dans ${this.minutesDelay} minutes`;
 		});
 	}
 }

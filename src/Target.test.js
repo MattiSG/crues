@@ -16,5 +16,5 @@ test('Target constructor', () => {
 });
 
 test('Target describes its water height in human-readable terms', () => {
-	return expect(new Target(new Station(STATION_ID), DELAY, DESCRIPTORS).getStatus()).resolves.toBe('L’eau recouvrira le perron dans 40 minutes');
+	return expect(new Target(new Station(STATION_ID), DELAY, DESCRIPTORS).getStatus()).resolves.toBe('L’eau recouvrira probablement le perron dans 40 minutes');
 });
