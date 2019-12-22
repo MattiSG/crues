@@ -5,7 +5,7 @@ class Target {
 		this.minutesDelay = minutesDelay;
 	}
 
-	getStatus() {
+	predictStatus() {
 		return this.station.getWaterHeight().then(height => {
 			let highestSubmergedLandmark = '';
 

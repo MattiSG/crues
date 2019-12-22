@@ -24,7 +24,7 @@
       '10 cm dans la maison': 6050,
     });
 
-    maison.getStatus().then(status => document.getElementById('title').innerText = status);
+    maison.predictStatus().then(status => document.getElementById('title').innerText = status);
   </script>
 </body>
 </html>
