@@ -1,0 +1,27 @@
+{
+  "count": 17218,
+  "first": "http://hubeau.eaufrance.fr/api/v1/hydrometrie/observations_tr?code_entite=Y230002001&cursor=&size=1",
+  "prev": null,
+  "next": "http://hubeau.eaufrance.fr/api/v1/hydrometrie/observations_tr?code_entite=Y230002001&cursor=AoJw2t68ku8CPwxZMjMwMDAyMF9ZMjMwMDAyMDAxX0hfNF8yMDE5LTEyLTIwVDIwOjE1OjAw&size=1",
+  "api_version": "1.0.1",
+  "data": [
+    {
+      "code_site": "Y2300020",
+      "code_station": "Y230002001",
+      "grandeur_hydro": "H",
+      "date_debut_serie": "2019-12-20T00:05:01Z",
+      "date_fin_serie": "2019-12-20T20:15:00Z",
+      "statut_serie": 4,
+      "code_systeme_alti_serie": 31,
+      "date_obs": "2019-12-20T20:15:00Z",
+      "resultat_obs": 4002,
+      "code_methode_obs": 0,
+      "libelle_methode_obs": "Mesure",
+      "code_qualification_obs": 16,
+      "libelle_qualification_obs": "Non qualifiée",
+      "continuite_obs_hydro": true,
+      "longitude": 3.470099834,
+      "latitude": 43.570381215
+    }
+  ]
+}
