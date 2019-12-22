@@ -1,0 +1,17 @@
+{
+  "name": "crues",
+  "description": "Notifier en cas de crues",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MattiSG/crues.git"
+  },
+  "author": "Matti Schneider",
+  "bugs": {
+    "url": "https://github.com/MattiSG/crues/issues"
+  },
+  "homepage": "https://github.com/MattiSG/crues#readme"
+}
