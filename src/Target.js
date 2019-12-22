@@ -1,20 +1,20 @@
 class Target {
-	constructor(station, minutesDelay, descriptors) {
+	constructor(station, minutesDelay, landmarks) {
 		this.station = station;
-		this.descriptors = descriptors;
+		this.landmarks = landmarks;
 		this.minutesDelay = minutesDelay;
 	}
 
 	getStatus() {
 		return this.station.getWaterHeight().then(height => {
-			let description = '';
+			let highestSubmergedLandmark = '';
 
-			Object.keys(this.descriptors).forEach(descriptor => {
-				if (this.descriptors[descriptor] <= height)
-					description = descriptor;
+			Object.keys(this.landmarks).forEach(landmark => {
+				if (this.landmarks[landmark] <= height)
+					highestSubmergedLandmark = landmark;
 			});
 
-			return `${description} dans ${this.minutesDelay} minutes`;
+			return `L’eau recouvrira ${highestSubmergedLandmark} dans ${this.minutesDelay} minutes`;
 		});
 	}
 }
