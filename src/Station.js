@@ -6,10 +6,19 @@ class Station {
 		this.id = id;
 	}
 
-	getWaterHeight() {
+	getWaterHeight(atDate = new Date()) {
 		return fetch(`http://hubeau.eaufrance.fr/api/v1/hydrometrie/observations_tr?size=1&code_entite=${this.id}`)
 			.then(res => res.json())
-			.then(json => json.data[0].resultat_obs);
+			.then(json => this.findHeightAtDate(json.data, atDate));
+	}
+
+	/**
+	 * @param  {Array} data  Measurement entries, ordered by descending date.
+	 * @param  {Date}  [date]  The date at which the water value should be returned. Defaults to now.
+	 * @return {Number}      Last known water height in the given dataset at the given date, in mm.
+	 */
+	findHeightAtDate(data, date = new Date()) {
+		return data.find(entry => new Date(entry.date_obs) <= date).resultat_obs;
 	}
 }
 
