@@ -10,7 +10,8 @@
 </head>
 
 <body>
-  <h1 id="title">Je contacte Vigicrue…</h1>
+  <h1 id="prediction">Je contacte Vigicrue…</h1>
+  <h2 id="now">Si c’est long, c’est qu’il y a un problème 😕</h2>
   <script src="dist/bundle.js"></script>
   <script>
     const stationPaulhan = new Station('Y230002001');
@@ -24,7 +25,8 @@
       '10 cm dans la maison': 6050,
     });
 
-    maison.predictStatus().then(status => document.getElementById('title').innerText = status);
+    maison.predictStatus().then(prediction => document.getElementById('prediction').innerText = prediction);
+    maison.inferStatus().then(inference => document.getElementById('now').innerText = inference);
   </script>
 </body>
 </html>

@@ -7,7 +7,7 @@ class Station {
 	}
 
 	getWaterHeight(atDate = new Date()) {
-		return fetch(`http://hubeau.eaufrance.fr/api/v1/hydrometrie/observations_tr?size=1&code_entite=${this.id}`)
+		return fetch(`https://hubeau.eaufrance.fr/api/v1/hydrometrie/observations_tr?size=10&grandeur_hydro=H&code_entite=${this.id}`)
 			.then(res => res.json())
 			.then(json => this.findHeightAtDate(json.data, atDate));
 	}
