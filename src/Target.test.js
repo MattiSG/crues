@@ -30,9 +30,13 @@ test('Target constructor', () => {
 });
 
 test('Target describes its future water height in human-readable terms', () => {
-	return expect(subject.predictStatus()).resolves.toBe('L’eau recouvrira probablement le perron dans 15 minutes');
+	return expect(subject.predictStatus()).resolves.toBe('L’eau recouvrira probablement le perron dans 15 minutes.');
 });
 
 test('Target describes its current water height in human-readable terms', () => {
-	return expect(subject.inferStatus(FIRST_ENTRY_DATE)).resolves.toBe('L’eau recouvre probablement la colline actuellement');
+	return expect(subject.inferStatus(FIRST_ENTRY_DATE)).resolves.toBe('L’eau recouvre probablement la colline actuellement.');
+});
+
+test('Target states if there have been changes in submerged landmarks', () => {
+	return expect(subject.hasForeseeableChanges(FIRST_ENTRY_DATE)).resolves.toBe(true);
 });

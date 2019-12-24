@@ -3,7 +3,7 @@
   "description": "Notifier en cas de crues",
   "main": "index.js",
   "scripts": {
-    "build": "webpack src/index.js -o dist/bundle.js",
+    "build": "webpack src/web.js -o dist/bundle.js",
     "test": "jest"
   },
   "repository": {
@@ -21,6 +21,7 @@
     "webpack-cli": "^3.3.10"
   },
   "dependencies": {
+    "dotenv": "^8.2.0",
     "node-fetch": "^2.6.0"
   }
 }
