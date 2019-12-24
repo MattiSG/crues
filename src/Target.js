@@ -5,18 +5,22 @@ class Target {
 		this.minutesDelay = minutesDelay;
 	}
 
-	predictStatus() {
-		return this.station.getWaterHeight().then(height => {
+	predictStatus(reference = new Date()) {
+		return this.station.getWaterHeight(reference).then(height => {
 			return `L’eau recouvrira probablement ${this.findSubmergedLandmarkForHeight(height)} dans ${this.minutesDelay} minutes.`;
 		});
 	}
 
 	inferStatus(reference = new Date()) {
-		const nowWithDelay = new Date(reference.getTime() - this.minutesDelay * 60 * 1000);
-
-		return this.station.getWaterHeight(nowWithDelay).then(height => {
+		return this.getPastHeight(reference).then(height => {
 			return `L’eau recouvre probablement ${this.findSubmergedLandmarkForHeight(height)} actuellement.`;
 		});
+	}
+
+	getPastHeight(reference = new Date()) {
+		const nowWithDelay = new Date(reference.getTime() - this.minutesDelay * 60 * 1000);
+
+		return this.station.getWaterHeight(nowWithDelay);
 	}
 
 	findSubmergedLandmarkForHeight(height) {
@@ -28,6 +32,13 @@ class Target {
 		});
 
 		return highestSubmergedLandmark;
+	}
+
+	hasForeseeableChanges(reference = new Date()) {
+		return Promise.all([ this.station.getWaterHeight(reference), this.getPastHeight(reference) ])
+			.then(([ currentHeight, pastHeight ]) => {
+				return this.findSubmergedLandmarkForHeight(currentHeight) != this.findSubmergedLandmarkForHeight(pastHeight);
+			});
 	}
 }
 

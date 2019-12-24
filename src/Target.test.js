@@ -36,3 +36,7 @@ test('Target describes its future water height in human-readable terms', () => {
 test('Target describes its current water height in human-readable terms', () => {
 	return expect(subject.inferStatus(FIRST_ENTRY_DATE)).resolves.toBe('L’eau recouvre probablement la colline actuellement.');
 });
+
+test('Target states if there have been changes in submerged landmarks', () => {
+	return expect(subject.hasForeseeableChanges(FIRST_ENTRY_DATE)).resolves.toBe(true);
+});

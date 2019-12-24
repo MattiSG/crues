@@ -16,11 +16,12 @@ function check() {
 
 	const alert = new Alert(process.env.SMS_RECIPIENTS.split(';'));
 
-	Promise.all([maison.predictStatus(), maison.inferStatus()])
-		.then(([ prediction, inference ]) => {
-			if (prediction != inference)
-				alert.sms(prediction);
-		});
+	maison.hasForeseeableChanges().then(hasForeseeableChanges => {
+		if (hasForeseeableChanges)
+			maison.predictStatus().then(prediction => alert.sms(prediction));
+		else
+			console.log('No foreseeable changes');
+	});
 }
 
 check();
