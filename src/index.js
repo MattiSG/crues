@@ -19,7 +19,7 @@ function check() {
 	Promise.all([maison.predictStatus(), maison.inferStatus()])
 		.then(([ prediction, inference ]) => {
 			if (prediction != inference)
-				alert.sms(`${prediction}. ${inference}`);
+				alert.sms(prediction);
 		});
 }
 

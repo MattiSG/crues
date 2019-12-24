@@ -7,7 +7,7 @@ class Target {
 
 	predictStatus() {
 		return this.station.getWaterHeight().then(height => {
-			return `L’eau recouvrira probablement ${this.findSubmergedLandmarkForHeight(height)} dans ${this.minutesDelay} minutes`;
+			return `L’eau recouvrira probablement ${this.findSubmergedLandmarkForHeight(height)} dans ${this.minutesDelay} minutes.`;
 		});
 	}
 
@@ -15,7 +15,7 @@ class Target {
 		const nowWithDelay = new Date(reference.getTime() - this.minutesDelay * 60 * 1000);
 
 		return this.station.getWaterHeight(nowWithDelay).then(height => {
-			return `L’eau recouvre probablement ${this.findSubmergedLandmarkForHeight(height)} actuellement`;
+			return `L’eau recouvre probablement ${this.findSubmergedLandmarkForHeight(height)} actuellement.`;
 		});
 	}
 
