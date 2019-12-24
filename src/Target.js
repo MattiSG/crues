@@ -7,13 +7,23 @@ class Target {
 
 	predictStatus(reference = new Date()) {
 		return this.station.getWaterHeight(reference).then(height => {
-			return `L’eau recouvrira probablement ${this.findSubmergedLandmarkForHeight(height)} dans ${this.minutesDelay} minutes.`;
+			const highestSubmergedLandmark = this.findSubmergedLandmarkForHeight(height);
+			const message = highestSubmergedLandmark
+				? `recouvrira probablement ${highestSubmergedLandmark}`
+				: 'sera probablement dans son lit';
+
+			return `L’eau ${message} dans ${this.minutesDelay} minutes.`;
 		});
 	}
 
 	inferStatus(reference = new Date()) {
 		return this.getPastHeight(reference).then(height => {
-			return `L’eau recouvre probablement ${this.findSubmergedLandmarkForHeight(height)} actuellement.`;
+			const highestSubmergedLandmark = this.findSubmergedLandmarkForHeight(height);
+			const message = highestSubmergedLandmark
+				? `recouvre probablement ${highestSubmergedLandmark}`
+				: 'est probablement dans son lit';
+
+			return `L’eau ${message} actuellement.`;
 		});
 	}
 
@@ -24,7 +34,7 @@ class Target {
 	}
 
 	findSubmergedLandmarkForHeight(height) {
-		let highestSubmergedLandmark = '';
+		let highestSubmergedLandmark;
 
 		Object.keys(this.landmarks).forEach(landmark => {
 			if (this.landmarks[landmark] <= height)

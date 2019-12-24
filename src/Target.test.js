@@ -29,6 +29,10 @@ test('Target constructor', () => {
 	expect(subject).toBeInstanceOf(Target);
 });
 
+test('Target finds no submerged landmark under first registered water height', () => {
+	expect(subject.findSubmergedLandmarkForHeight(199)).toBeUndefined();
+});
+
 test('Target describes its future water height in human-readable terms', () => {
 	return expect(subject.predictStatus()).resolves.toBe('L’eau recouvrira probablement le perron dans 15 minutes.');
 });
