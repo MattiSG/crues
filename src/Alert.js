@@ -1,10 +1,6 @@
+const fetch = require('node-fetch');
+const { URLSearchParams } = require('url');
 require('dotenv').config();
-
-const ovh = require('ovh')({
-	appKey: process.env.OVH_APP_KEY,
-	appSecret: process.env.OVH_APP_SECRET,
-	consumerKey: process.env.OVH_CONSUMER_KEY,
-});
 
 
 class Alert {
@@ -13,11 +9,24 @@ class Alert {
 	}
 
 	sms(message) {
-		ovh.request('POST', `/sms/${process.env.OVH_SERVICE_NAME}/jobs`, {
-			message,
-			receivers: this.recipients,
-		}, console.log.bind(console));
+		let payload = new URLSearchParams();
+		payload.append('phone', '');
+		payload.append('message', message);
+		payload.append('key', process.env.TEXTBELT_KEY);
+
+		this.recipients.forEach(recipient => {
+			payload.set('phone', recipient.replace('00', '+'));
+			_sendSms(payload);
+		});
 	}
+}
+
+function _sendSms(parameters) {
+	fetch('https://textbelt.com/text', {
+		method: 'POST',
+		body: parameters,
+	}).then(res => res.json())
+		.then(response => console.log(response));
 }
 
 module.exports = Alert;
